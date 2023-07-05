@@ -1,9 +1,7 @@
-const cleanSet = (set, startString) => {
+export default function cleanSet(set, startString) {
   if (!startString || typeof startString !== 'string' || typeof set !== 'object') return '';
-  
-  const filteredValues = [...set].filter((value) => value.startsWith(startString));
-  const cleanedString = filteredValues.map((value) => value.slice(startString.length)).join('-');
-  return cleanedString;
-};
-
-export default cleanSet;
+  return [...set]
+    .filter((el) => el.startsWith(startString))
+    .map((el) => el.slice(startString.length))
+    .join('-');
+}
